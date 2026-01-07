@@ -1,4 +1,4 @@
-console.log("preset 1989 chargé");
+console.log("preset 1991 chargé");
 
 export default {
   year: 1991,
@@ -6,12 +6,15 @@ export default {
 
   image: "./images/1980.webp",
 
-  rgbStrength: 18,
-  offset: 30,
-  speed: 0.003,
-  zoom: 1.06,
+  rgbStrength: 26,
+  offset: 56,
+  speed: 0.060,
+  zoom: 1.10,
+
+  blur: 4.4,            
+  blurJitter: 4.5,
 
   pixelSort: true,
-  scanlinesOpacity: 0.3,
-  textGlitch: 0.85
+  scanlinesOpacity: 0.46,
+  textGlitch: 0.75
 };

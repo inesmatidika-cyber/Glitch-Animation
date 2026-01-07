@@ -69,17 +69,65 @@ function animate() {
     });
   }
 
-  /* ===== HYBRIDE (1990, 1992) ===== */
-  if (current.type === "hybrid") {
-    const x = Math.sin(t * 900) * current.offset * 0.35;
-    const y = (Math.random() < (current.tearChance ?? 0))
-      ? (Math.random() - 0.5) * 14
-      : 0;
+  // ===== BLUR GLITCH (1990 hybride) =====
+const baseBlur = current.blur ?? 0;
+const blurJitter = current.blurJitter ?? 0;
 
-    bgLayers.forEach((bg, i) => {
-      bg.style.transform = `translate(${x + i * current.rgbStrength}px, ${y}px) scale(${current.zoom})`;
+// variation aléatoire du flou
+const blur =
+  baseBlur +
+  (Math.random() < 0.35
+    ? Math.random() * blurJitter
+    : 0);
+
+bgLayers.forEach(bg => {
+  bg.style.filter = `blur(${blur}px)`;
+});
+
+console.log("BLUR DEBUG", {
+  year: current.year,
+  type: current.type,
+  blur: current.blur,
+  blurJitter: current.blurJitter,
+  bgCount: bgLayers?.length
+});
+
+
+/* ===== BLUR GLITCH (1991 → 1996) — SAFE ===== */
+if (bgLayers && bgLayers.length) {
+  // Optionnel : activer seulement 1991+
+  if (current.year >= 1991) {
+    const baseBlur = Number(current.blur ?? 0);
+    const blurJitter = Number(current.blurJitter ?? 0);
+
+    let blur = baseBlur;
+
+    // respiration lente
+    blur += Math.abs(Math.sin(t * 900)) * blurJitter * 0.25;
+
+    // pics glitch
+    if (Math.random() < 0.35) {
+      blur += Math.random() * blurJitter;
+    }
+
+    // affinage par type
+    if (current.type === "compute") blur *= 0.9;
+    if (current.type === "hybrid") blur *= 1.1;
+    if (current.type === "compression") blur *= 1.25;
+    if (current.type === "crash") blur *= 0.6;
+
+    // sécurité : pas de NaN / Infinity / négatif
+    if (!Number.isFinite(blur) || blur < 0) blur = 0;
+
+    bgLayers.forEach(bg => {
+      bg.style.filter = `blur(${blur.toFixed(2)}px)`;
     });
+  } else {
+    // avant 1991 : pas de flou
+    bgLayers.forEach(bg => (bg.style.filter = "none"));
   }
+}
+
 
   /* ===== COMPRESSION (1993, 1996) ===== */
   if (current.type === "compression") {

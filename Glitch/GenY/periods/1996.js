@@ -6,12 +6,15 @@ export default {
 
   image: "./images/1980.webp",
 
-  rgbStrength: 18,
-  offset: 30,
-  speed: 0.003,
-  zoom: 1.06,
+  rgbStrength: 46,
+  offset: 92,
+  speed: 0.135,
+  zoom: 1.20,
+
+  blur: 9.8,            
+  blurJitter: 10.5,
 
   pixelSort: true,
-  scanlinesOpacity: 0.3,
-  textGlitch: 0.85
+  scanlinesOpacity: 0.86,
+  textGlitch: 2.65
 };

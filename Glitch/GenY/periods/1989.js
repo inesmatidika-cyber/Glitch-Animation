@@ -13,5 +13,5 @@ export default {
 
   pixelSort: true,
   scanlinesOpacity: 0.3,
-  textGlitch: 0.85
+  textGlitch: 0.75
 };

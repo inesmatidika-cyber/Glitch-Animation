@@ -5,7 +5,7 @@ export default {
     image: "./images/1980.webp",
   
     rgbStrength: 14,
-    offset: 22,
+    offset: 28,
     speed: 0.0025,
     zoom: 1.04,
   

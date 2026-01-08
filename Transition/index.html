@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BOOT ERROR → BSOD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BOOT ERROR overlay -->
+  <div id="boot">BOOT ERROR</div>
+
+  <!-- BSOD -->
+  <main class="bsod">
+    <div class="bsod-inner">
+      <div class="face">:(</div>
+
+      <div class="title">
+        Your PC ran into a problem and needs to restart.
+      </div>
+
+      <div class="progress">
+        We’re just collecting some error info, and then we’ll restart for you.
+        <span class="percent"><span id="pct">0</span>%</span>
+      </div>
+
+      <div class="details">
+        Stop code: <span id="stop">VIDEO_TDR_FAILURE</span><br />
+        What failed: <span id="failed">webgl_driver.sys</span>
+      </div>
+
+      <div class="restart">
+        Restarting in <span id="sec">3</span> seconds...
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

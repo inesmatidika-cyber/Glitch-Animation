@@ -1,0 +1,113 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0078d7;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ===== BOOT ERROR ===== */
+#boot {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  font-size: 32px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: bootFlicker 120ms infinite steps(1,end);
+}
+
+@keyframes bootFlicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.75; }
+  100% { opacity: 1; }
+}
+
+/* ===== BSOD ===== */
+.bsod {
+  position: fixed;
+  inset: 0;
+  background: #0b2a86;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 5;
+}
+
+.bsod-inner {
+  max-width: 760px;
+  padding: 80px 60px;
+  line-height: 1.35;
+}
+
+/* Typography */
+.face {
+  font-size: 90px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.progress {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.percent {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.details, .restart {
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+/* Subtle instability */
+.bsod {
+  animation: flash 180ms infinite steps(1,end);
+}
+
+.bsod-inner {
+  animation: shake 140ms infinite steps(1,end);
+}
+
+@keyframes shake {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(3px,-2px); }
+  50% { transform: translate(-4px,3px); }
+  75% { transform: translate(2px,4px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes flash {
+  0% { filter: none; }
+  50% { filter: brightness(1.1); }
+  100% { filter: none; }
+}
+
+/* Scanlines */
+.bsod::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08) 1px,
+      rgba(0,0,0,.12) 2px,
+      rgba(0,0,0,.12) 6px
+    );
+  opacity: .3;
+  pointer-events: none;
+}

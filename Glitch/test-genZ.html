@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test GenZ</title>
+
+    <!-- 👇 LOAD CSS -->
+    <link rel="stylesheet" href="./GenZ/genZ.css" />
+  </head>
+
+  <body>
+    <div id="glitch-zone"></div>
+
+    <script type="module">
+      import { initGenZ, renderGenZ } from "./GenZ/GenZ.js";
+      import GenZ from "./GenZ/index.js";
+
+      fetch("./GenZ/GenZ.html")
+        .then((r) => r.text())
+        .then((html) => {
+          const zone = document.querySelector("#glitch-zone");
+          console.log("ZONE:", zone); // 👈 debug
+
+          zone.innerHTML = html; // 👈 ligne 11
+          initGenZ(zone);
+
+          let i = 0;
+          setInterval(() => {
+            renderGenZ(GenZ.periods[i]);
+            i = (i + 1) % GenZ.periods.length;
+          }, 3000);
+        });
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@ export default {
   label: "Glitch géométrique",
   type: "geometry",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
   rgbStrength: 10,
   offset: 20,
   speed: 0.0025,

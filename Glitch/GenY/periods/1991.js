@@ -4,7 +4,7 @@ export default {
   year: 1991,
   label: "Glitch “interface”",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 26,
   offset: 56,

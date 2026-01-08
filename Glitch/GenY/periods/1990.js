@@ -2,7 +2,7 @@ export default {
   year: 1990,
   label: "Hybride analogique-numérique (transition)",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 22,
   offset: 44,

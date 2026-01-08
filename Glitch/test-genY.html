@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test GenY</title>
+
+  <!-- 👇 LOAD CSS -->
+  <link rel="stylesheet" href="./GenY/genY.css">
+</head>
+
+<body>
+
+  <div id="glitch-zone"></div>
+
+  <script type="module">
+    import { initGenY, renderGenY } from "./GenY/genY.js";
+    import GenY from "./GenY/index.js";
+
+    fetch("./GenY/genY.html")
+      .then(res => res.text())
+      .then(html => {
+        const zone = document.querySelector("#glitch-zone");
+        zone.innerHTML = html;
+
+        initGenY(zone);
+        let i = 0;
+
+        setInterval(() => {
+          renderGenY(GenY.periods[i]);
+          i = (i + 1) % GenY.periods.length;
+        }, 2500);
+        
+      });
+  </script>
+
+</body>
+</html>

@@ -4,8 +4,7 @@ export default {
   year: 1995,
   label: "Iconique : le “Blue Screen” et l’esthétique du crash",
 
-  image: "./images/1980.webp",
-
+  image: "1980.webp",
   rgbStrength: 42,
   offset: 86,
   speed: 0.107,

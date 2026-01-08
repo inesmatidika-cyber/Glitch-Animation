@@ -4,7 +4,7 @@ export default {
   year: 1989,
   label: "1989 — Naissance du World Wide Web",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 18,
   offset: 30,

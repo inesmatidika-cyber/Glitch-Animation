@@ -4,7 +4,7 @@ export default {
   year: 1993,
   label: "Compression naissante (blocs, macro-artefacts)",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 34,
   offset: 72,

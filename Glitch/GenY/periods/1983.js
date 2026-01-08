@@ -3,7 +3,7 @@ export default {
   label: "Premières erreurs de calcul",
   type: "compute",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
   rgbStrength: 6,
   offset: 12,
   speed: 0.0018,

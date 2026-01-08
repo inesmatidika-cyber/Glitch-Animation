@@ -3,7 +3,8 @@ export default {
   label: "Glitch analogique brut",
   type: "analog",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
+
 
   rgbStrength: 2,
   offset: 4,

@@ -2,7 +2,7 @@ export default {
     year: 1987,
     label: "1987 — Visualisation des réseaux",
   
-    image: "./images/1980.webp",
+    image: "1980.webp",
   
     rgbStrength: 14,
     offset: 28,

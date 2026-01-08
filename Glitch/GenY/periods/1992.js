@@ -4,7 +4,7 @@ export default {
   year: 1992,
   label: "Artefacts de numérisation",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 30,
   offset: 64,

@@ -4,7 +4,7 @@ export default {
   year: 1996,
   label: "Compression + “glitch vidéo” plus assumé",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 46,
   offset: 92,

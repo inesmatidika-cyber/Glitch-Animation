@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Gen Alpha</title>
+    <link rel="stylesheet" href="./GenAlpha/style.css" />
+  </head>
+
+  <body>
+    <div id="glitch-zone"></div>
+
+    <script type="module">
+      import { initGenAlpha, renderGenAlpha } from "./GenAlpha/GenAlpha.js";
+      import GenAlpha from "./GenAlpha/index.js";
+
+      fetch("./GenAlpha/GenAlpha.html")
+        .then((r) => r.text())
+        .then((html) => {
+          const zone = document.querySelector("#glitch-zone");
+          console.log("ZONE:", zone);
+
+          zone.innerHTML = html;        
+          initGenAlpha(zone);          
+          
+          let i = 0;
+          setInterval(() => {
+            renderGenAlpha(GenAlpha.periods[i]);
+            i = (i + 1) % GenAlpha.periods.length;
+          }, 3000);
+        })
+        .catch(err => console.error("GEN ALPHA ERROR:", err));
+    </script>
+  </body>
+</html>

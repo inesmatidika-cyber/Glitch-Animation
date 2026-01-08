@@ -4,7 +4,7 @@ export default {
   year: 1994,
   label: "Glitch “système” (crash, exceptions)",
 
-  image: "./images/1980.webp",
+  image: "1980.webp",
 
   rgbStrength: 38,
   offset: 80,

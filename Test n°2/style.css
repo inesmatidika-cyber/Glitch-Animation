@@ -1,0 +1,238 @@
+:root{
+  --bg:#05060a;
+  --fg:#e9ecff;
+  --a:#ff003c;
+  --b:#00f0ff;
+  --c:#a6ff00;
+  --shake: 1;
+  --meltdown: 0;
+  --blur: 0px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.stage{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+}
+
+.bg{
+  position:absolute;
+  inset:-5%;
+  background:
+    radial-gradient(1200px 800px at 70% 40%, rgba(255,0,60,.15), transparent 60%),
+    radial-gradient(1000px 700px at 30% 60%, rgba(0,240,255,.12), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 30%),
+    #05060a;
+  filter: contrast(1.1) saturate(1.2);
+  transform: scale(1.02);
+}
+
+.scanlines{
+  position:absolute;
+  inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.04) 1px,
+    rgba(0,0,0,.06) 2px,
+    rgba(0,0,0,.06) 4px
+  );
+  mix-blend-mode: overlay;
+  opacity:.35;
+  pointer-events:none;
+}
+
+.vignette{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.65) 75%);
+  pointer-events:none;
+}
+
+.content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  gap:18px;
+  filter: blur(var(--blur));
+}
+
+.glitch{
+  position:relative;
+  font-size: clamp(28px, 6vw, 80px);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align:center;
+  line-height: 1.05;
+  transform:
+    translate(calc(var(--shake) * 1px), calc(var(--shake) * -1px))
+    rotate(calc(var(--shake) * .02deg));
+  will-change: transform, filter;
+}
+
+.glitch::before,
+.glitch::after{
+  content: attr(data-text);
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.9;
+}
+
+.glitch::before{
+  transform: translate(2px, -1px);
+  text-shadow: -2px 0 var(--a);
+  clip-path: inset(0 0 0 0);
+  animation: g1 1200ms infinite steps(1,end);
+}
+
+.glitch::after{
+  transform: translate(-2px, 1px);
+  text-shadow: 2px 0 var(--b);
+  clip-path: inset(0 0 0 0);
+  animation: g2 900ms infinite steps(1,end);
+}
+
+@keyframes g1{
+  0%{ clip-path: inset(10% 0 70% 0); transform: translate(3px,-2px) skewX(10deg); }
+  10%{ clip-path: inset(60% 0 20% 0); transform: translate(-5px,1px) skewX(-16deg); }
+  20%{ clip-path: inset(30% 0 45% 0); transform: translate(6px,0) skewX(22deg); }
+  30%{ clip-path: inset(80% 0 5% 0); transform: translate(-2px,2px) skewX(-30deg); }
+  40%{ clip-path: inset(15% 0 65% 0); transform: translate(4px,-1px) skewX(12deg); }
+  50%{ clip-path: inset(55% 0 25% 0); transform: translate(-8px,0) skewX(-24deg); }
+  60%{ clip-path: inset(25% 0 55% 0); transform: translate(7px,1px) skewX(18deg); }
+  70%{ clip-path: inset(70% 0 10% 0); transform: translate(-4px,-2px) skewX(-10deg); }
+  80%{ clip-path: inset(5% 0 75% 0); transform: translate(2px,2px) skewX(28deg); }
+  90%{ clip-path: inset(40% 0 35% 0); transform: translate(-6px,1px) skewX(-22deg); }
+  100%{ clip-path: inset(0 0 0 0); transform: translate(0,0); }
+}
+
+@keyframes g2{
+  0%{ clip-path: inset(65% 0 10% 0); transform: translate(-4px,2px) skewY(10deg); }
+  12%{ clip-path: inset(5% 0 80% 0); transform: translate(7px,-1px) skewY(-18deg); }
+  24%{ clip-path: inset(35% 0 40% 0); transform: translate(-6px,0) skewY(26deg); }
+  36%{ clip-path: inset(75% 0 12% 0); transform: translate(3px,1px) skewY(-30deg); }
+  48%{ clip-path: inset(20% 0 55% 0); transform: translate(-8px,-2px) skewY(14deg); }
+  60%{ clip-path: inset(55% 0 25% 0); transform: translate(6px,2px) skewY(-22deg); }
+  72%{ clip-path: inset(12% 0 65% 0); transform: translate(-3px,1px) skewY(30deg); }
+  84%{ clip-path: inset(42% 0 38% 0); transform: translate(5px,-1px) skewY(-10deg); }
+  100%{ clip-path: inset(0 0 0 0); transform: translate(0,0); }
+}
+
+.meta{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  justify-content:center;
+  opacity:.85;
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+#noise{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  mix-blend-mode: screen;
+  opacity:.15;
+  pointer-events:none;
+}
+
+.crash-overlay{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transform: scale(1.02);
+  transition: opacity 120ms linear, transform 120ms linear;
+}
+
+.crash-overlay.on{
+  opacity:1;
+  transform: scale(1);
+}
+
+.crash-card{
+  width:min(720px, 92vw);
+  background: rgba(0,0,0,.78);
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 30px 120px rgba(0,0,0,.7);
+  padding: 22px 18px;
+  backdrop-filter: blur(10px);
+}
+
+.crash-title{
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--c);
+  margin-bottom: 8px;
+}
+
+.crash-sub{
+  opacity:.9;
+  margin-bottom: 12px;
+}
+
+.crash-code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 10px 12px;
+  border: 1px dashed rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  margin-bottom: 12px;
+  word-break: break-all;
+}
+
+.crash-hint{
+  opacity:.85;
+  font-size: 13px;
+}
+
+/* “meltdown” : tout devient trop agressif */
+html[data-mode="MELTDOWN"] .glitch{
+  filter: contrast(1.6) saturate(2.2);
+}
+
+html[data-mode="MELTDOWN"] .scanlines{
+  opacity:.6;
+}
+
+html[data-mode="SAFE"]{
+  --shake: 0;
+  --blur: 0px;
+}
+
+html[data-mode="SAFE"] .scanlines,
+html[data-mode="SAFE"] #noise{
+  opacity:.06;
+}
+
+html[data-mode="SAFE"] .glitch::before,
+html[data-mode="SAFE"] .glitch::after{
+  animation: none;
+  opacity:.25;
+}

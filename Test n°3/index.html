@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WebGL Hard Glitch + Blue Screen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hud">
+    <div><strong id="mode">GLITCH</strong></div>
+    <div>Click = intensity · ESC = SAFE</div>
+  </div>
+
+  <canvas id="gl"></canvas>
+  <canvas id="hudFx"></canvas>
+
+  <!-- BLUE SCREEN (fake) -->
+  <div class="bsod" id="bsod" aria-hidden="true">
+    <div class="bsod-inner">
+      <div class="bsod-face">:(</div>
+      <div class="bsod-title">Votre appareil a rencontré un problème et doit redémarrer.</div>
+      <div class="bsod-sub">Nous collectons des informations sur l’erreur, puis nous redémarrons.</div>
+
+      <div class="bsod-progress">
+        <span id="bsodPct">0</span>% terminé
+      </div>
+
+      <div class="bsod-code">
+        STOP CODE: <span id="bsodStop">VIDEO_TDR_FAILURE</span><br/>
+        WHAT FAILED: <span id="bsodWhat">glitch_shader.sys</span>
+      </div>
+
+      <div class="bsod-hint">Redémarrage dans <span id="bsodRestart">3</span>s</div>
+      <div class="bsod-mini">ESC = SAFE MODE</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

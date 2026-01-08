@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hard Crash Glitch (safe simulation)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="stage" aria-hidden="true">
+    <div class="bg"></div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <div class="crash-overlay" id="crashOverlay" aria-hidden="true">
+      <div class="crash-card">
+        <div class="crash-title">SYSTEM FAILURE</div>
+        <div class="crash-sub">signal lost · buffer overflow · memory leak</div>
+        <div class="crash-code" id="crashCode">E_0xDEAD_BEEF</div>
+        <div class="crash-hint">Auto-restart in <span id="restartIn">3</span>s</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="glitch" id="glitchText" data-text="GEN X? NO. HARD CRASH.">
+        GEN X? NO. HARD CRASH.
+      </div>
+
+      <div class="meta">
+        <span>Mode: <strong id="modeLabel">GLITCH</strong></span>
+        <span>ESC = SAFE MODE</span>
+        <span>Click = toggle intensity</span>
+      </div>
+
+      <canvas id="noise"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

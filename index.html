@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spreadsheet Lock + Quiz (Excel-like)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="theme-excel">
+  <!-- Faux header Excel -->
+  <div class="excelTop">
+    <div class="excelTitlebar">
+      <div class="excelLeft">
+        <span class="pill">Enregistrement automatique</span>
+        <div class="toggle" aria-hidden="true"></div>
+      </div>
+
+      <div class="excelCenter">
+        <strong>Mon premier classeur</strong> – Enregistré
+      </div>
+
+      <div class="excelRight">
+        <span class="iconBtn" aria-hidden="true">⟲</span>
+        <span class="iconBtn" aria-hidden="true">⟲</span>
+        <span class="iconBtn" aria-hidden="true">▾</span>
+      </div>
+    </div>
+
+    <div class="excelTabs">
+      <button class="tab">Fichier</button>
+      <button class="tab active">Accueil</button>
+      <button class="tab">Insertion</button>
+      <button class="tab">Mise en page</button>
+      <button class="tab">Formules</button>
+      <button class="tab">Données</button>
+      <button class="tab">Révision</button>
+      <button class="tab">Affichage</button>
+    </div>
+
+    <!-- Ruban Excel (visuel uniquement) -->
+    <div class="excelRibbon">
+      <div class="group">
+        <div class="groupTitle">Presse-papiers</div>
+        <div class="groupRow">
+          <div class="btn">Coller</div>
+          <div class="btn ghost">Couper</div>
+          <div class="btn ghost">Copier</div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="groupTitle">Police</div>
+        <div class="groupRow">
+          <select class="select" aria-label="Police">
+            <option>Calibri</option>
+          </select>
+          <select class="select small" aria-label="Taille">
+            <option>11</option>
+          </select>
+          <div class="btn ghost"><strong>G</strong></div>
+          <div class="btn ghost"><em>I</em></div>
+          <div class="btn ghost"><u>S</u></div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="groupTitle">Alignement</div>
+        <div class="groupRow">
+          <div class="btn ghost">≡</div>
+          <div class="btn ghost">≣</div>
+          <div class="btn ghost">↔</div>
+          <div class="btn ghost">↕</div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="groupTitle">Nombre</div>
+        <div class="groupRow">
+          <select class="select" aria-label="Format nombre">
+            <option>Standard</option>
+          </select>
+          <div class="btn ghost">%</div>
+          <div class="btn ghost">,00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zone feuille -->
+  <div class="sheetWrap excelSheetWrap">
+    <div class="formulaBar">
+      <div class="nameBox" id="nameBox">A1</div>
+      <div class="formulaBtns" aria-hidden="true">
+        <span class="fxBtn">✕</span>
+        <span class="fxBtn">✓</span>
+      </div>
+      <div class="fx">fx</div>
+      <input class="formulaInput" id="formulaInput" type="text" placeholder="" />
+    </div>
+
+    <div id="sheet" class="sheet" aria-label="Grille"></div>
+  </div>
+
+  <!-- Modal -->
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Déverrouiller">
+    <div class="modal">
+      <h2 id="modalTitle">Déverrouiller la cellule</h2>
+      <p id="modalQuestion"></p>
+
+      <div class="row">
+        <input id="answerInput" type="text" autocomplete="off" placeholder="Tape la réponse ici (clavier)" />
+        <button id="validateBtn">Valider</button>
+        <button id="cancelBtn" class="secondary">Annuler</button>
+      </div>
+
+      <div class="hint">Astuce : Entrée = valider, Échap = fermer.</div>
+      <div id="errorMsg" class="error"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
